@@ -1,0 +1,29 @@
+version: 2
+sources:
+  - name: gae_data
+    loader: BigQuery
+    schema: bi_raw_data
+    database: dash-project-376514
+    freshness: # default freshness
+      warn_after: {count: 12, period: hour}
+      error_after: {count: 24, period: hour}
+    tables:
+      - name: global_dato_data_gae
+        tags: ['Datorama Data']
+        meta:
+          contains_pii: false
+          owner : " Team BI"
+
+  - name: mapping_tag
+    loader: BigQuery
+    schema: bi_sheets
+    database: dash-project-376514
+    freshness: # default freshness
+      warn_after: {count: 12, period: hour}
+      error_after: {count: 24, period: hour}
+    tables:
+      - name: ademe_sheets
+        tags: ['Datorama Data']
+        meta:
+          contains_pii: false
+          owner : " Team BI"
