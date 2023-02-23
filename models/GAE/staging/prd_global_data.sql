@@ -16,9 +16,9 @@ select
     split(substr(campaign_name, 12), '-')[safe_offset(2)] as adform_campaign_type_3,
     split(substr(campaign_name, 12), '-')[safe_offset(3)] as adform_campaign_type_4,
     split(substr(campaign_name, 12), '-')[safe_offset(4)] as adform_campaign_type_5,
-
-    -- Gestion des campagnes display
-    media_buy_name,
+ 
+    -- Gestion des campagnes display 
+    media_buy_name as prd_media_buy_name,
     split(media_buy_name, '-')[safe_offset(0)] as adform_media_buy_name1,
     split(media_buy_name, '-')[safe_offset(1)] as adform_media_buy_name2,
     split(media_buy_name, '-')[safe_offset(2)] as adform_media_buy_name3,
