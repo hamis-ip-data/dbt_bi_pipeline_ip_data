@@ -96,6 +96,12 @@ select
     stg_adform_standards_metrics.campaign_quotation_id,
     stg_adform_standards_metrics.site_id,
     stg_adform_standards_metrics.site_name,
+    case when regexp_contains(lower(stg_adform_standards_metrics.site_name),'tiktok|snapchat|pinterest|facebook|instagram')
+         then 'Social Ads'
+         when regexp_contains(lower(stg_adform_standards_metrics.site_name),'adwords')
+         then 'Search Ads'
+         else 'Display'
+         end as data_source_type, 
     stg_adform_standards_metrics.placement_id,
     stg_adform_standards_metrics.placement_name,
     stg_adform_standards_metrics.placement_type,
@@ -138,7 +144,7 @@ select
   from stg_adform_standards_metrics
     left join stg_adform_conversions_dict
   on stg_adform_standards_metrics.info_key = stg_adform_conversions_dict.info_key  
-   order by impressions desc 
+  where stg_adform_standards_metrics.site_id !=-1
 
 
    

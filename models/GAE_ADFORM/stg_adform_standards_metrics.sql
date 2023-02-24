@@ -32,7 +32,9 @@ select
     split(placement_name, '-')[safe_offset(9)] as adform_placement_name10,    
     creative_id,
     creative_name , 
-  -- Rules for handling diffusion metrics
+/* Rules for handling diffusion metrics
+   check how to update these rules based on usages date base
+*/
   case when impressions is null then impressions_original else impressions end as impressions,
   case when clicks is null then clicks_original else clicks end as clicks,
   case when media_cost is null then media_cost_original else media_cost end as media_cost,
