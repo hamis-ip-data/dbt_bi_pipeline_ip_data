@@ -25,6 +25,7 @@ select
     ad_id,
     ad_name,
     activity_name,
+    
     -- Page arrivee , Landing page or page accueil 
     case when regexp_contains(lower(activity_name), 'pagearrivee|pageacc') and activity_view_through_conversions_original is not null
         then activity_view_through_conversions_original else 0 end as pv_arrivee , 

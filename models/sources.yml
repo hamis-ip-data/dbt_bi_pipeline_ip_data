@@ -45,3 +45,17 @@ sources:
         meta:
           contains_pii: false
           owner : "Team BI"
+
+  - name: gae_ds_data
+    loader: BigQuery
+    schema: bi_gae_ds_export
+    database: dash-project-376514
+    freshness: # default freshness
+      warn_after: {count: 12, period: hour}
+      error_after: {count: 24, period: hour}
+    tables:
+      - name: gae_ds_export_*  
+        tags: ['Search Ads 360 Data']
+        meta:
+          contains_pii: false
+          owner : "Team BI"
