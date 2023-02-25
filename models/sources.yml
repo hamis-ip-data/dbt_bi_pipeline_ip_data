@@ -59,3 +59,8 @@ sources:
         meta:
           contains_pii: false
           owner : "Team BI"
+      - name: gae_ds_floodlight_export_*  
+        tags: ['Search Ads 360 Data']
+        meta:
+          contains_pii: false
+          owner : "Team BI"          

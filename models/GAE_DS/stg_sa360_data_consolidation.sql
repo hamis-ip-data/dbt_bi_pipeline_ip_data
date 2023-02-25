@@ -4,6 +4,7 @@
     )
 }}
 
+with data_standard as (
 select 
      date, 
      Agency__DoubleClick_Search as agency ,
@@ -32,7 +33,12 @@ select
      Visits__DoubleClick_Search as visits , 
      Transactions__DoubleClick_Search as transactions
  from {{ ref('src_sa360_data') }}
+)
 
-  
+select 
+     concat(date,'_', advertiser_id,'_',campaign_id,'_',ad_group_id,'_',ad_id) as info_key, 
+     *
+from data_standard
+
      
 
