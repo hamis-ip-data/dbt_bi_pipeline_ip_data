@@ -4,31 +4,30 @@
     )
 }}
 
-
-select 
-    
-    Date,
-    Data_Source_id,
-    Campaign,
-    Data_Source_name,
-    Data_Source,
-    Account__DoubleClick_Search,
-    Account_ID__DoubleClick_Search,
-    Ad__DoubleClick_Search,
-    Ad_group__DoubleClick_Search,
-    Ad_group_ID__DoubleClick_Search,
-    Ad_ID__DoubleClick_Search,
-    Advertiser_ID__DoubleClick_Search,
-    Advertiser__DoubleClick_Search,
-    Agency_ID__DoubleClick_Search,
-    Agency__DoubleClick_Search,
-    Campaign_ID__DoubleClick_Search,
-    Campaign__DoubleClick_Search,
-    Engine__DoubleClick_Search,
-    Actions__DoubleClick_Search,
-    Floodlight_activity__DoubleClick_Search,
-    Floodlight_activity_ID__DoubleClick_Search,
-    Floodlight_activity_tag__DoubleClick_Search,
-    Floodlight_group__DoubleClick_Search,
-    Floodlight_group_ID__DoubleClick_Search
- from {{ ref('src_sa360_floodlight') }}
+ SELECT
+  info_key,
+  Date,
+  Data_Source_type,
+  Data_Source_id,
+  Data_Source_name,
+  Data_Source,
+  Account__DoubleClick_Search,
+  account_id,
+  ad_group,
+  ad_group_id,
+  advertiser_id,
+  advertiser_name,
+  agency_id,
+  agency,
+  campaign_id,
+  campaign,
+  engine,
+  actions_ds,
+  floodlight,
+  floodlight_id,
+  floodlight_tag,
+  floodlight_group,
+  floodlight_group_id
+FROM
+    {{ ref('src_sa360_floodlight') }}
+order by actions_ds desc
