@@ -64,3 +64,22 @@ sources:
         meta:
           contains_pii: false
           owner : "Team BI"          
+
+  - name: template_cm
+    loader: BigQuery
+    schema: ixiov2
+    database: france-iprospect-ixio-197411
+    freshness: # default freshness
+      warn_after: {count: 12, period: hour}
+      error_after: {count: 24, period: hour}
+    tables:
+      - name: standard_76  
+        tags: ['Ixio Data']
+        meta:
+          contains_pii: false
+          owner : "Team BI"
+      - name: floodlight_76  
+        tags: ['Ixio Data']
+        meta:
+          contains_pii: false
+          owner : "Team BI"
