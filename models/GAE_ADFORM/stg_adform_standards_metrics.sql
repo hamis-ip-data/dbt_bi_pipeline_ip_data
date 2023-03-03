@@ -36,7 +36,7 @@ select
     creative_name , 
     split(creative_name, '-')[safe_offset(0)] as creative_asset_type,
     split(creative_name, '-')[safe_offset(1)] as creative_format_name,
-    split(creative_name, '-')[safe_offset(2)] as creative_format_size
+    split(creative_name, '-')[safe_offset(2)] as creative_format_size,
     split(creative_name, '-')[safe_offset(3)] as creative_message_name,
     split(creative_name, '-')[safe_offset(4)] as creative_adserver_placement_id,    
     split(creative_name, '-')[safe_offset(4)] as creative_date,    
