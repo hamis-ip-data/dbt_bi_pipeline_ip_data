@@ -4,20 +4,20 @@
     )
 }}
 
+/* The campaign naming convention should follow the instruction at this adress -> */
+
 select 
     concat(date,'_',campaign_id,'_',site_id,'_',placement_id,'_',creative_id,'_', ad_id) as info_key,
     date, 
     advertiser_name ,
     campaign_name, 
     campaign_id,
-    split(substr(campaign_name, 12), '-')[safe_offset(0)] as campaign_date,
-    split(substr(campaign_name, 12), '-')[safe_offset(1)] as campaign_category,
-    split(substr(campaign_name, 12), '-')[safe_offset(2)] as campaign_levier,
-    split(substr(campaign_name, 12), '-')[safe_offset(3)] as campaign_ministere,
-    split(substr(campaign_name, 12), '-')[safe_offset(4)] as campaign_campaign_name,
-    split(substr(campaign_name, 12), '-')[safe_offset(5)] as campaign_adzzle_number,
-    split(substr(campaign_name, 12), '-')[safe_offset(6)] as campaign_objective,
-    split(substr(campaign_name, 12), '-')[safe_offset(7)] as campaign_platform_name,   
+    substr(campaign_name, 0,10) as campaign_date,
+    split(substr(campaign_name, 12), '-')[safe_offset(0)] as campaign_category,
+    split(substr(campaign_name, 12), '-')[safe_offset(1)] as campaign_levier,
+    split(substr(campaign_name, 12), '-')[safe_offset(2)] as campaign_ministere,
+    split(substr(campaign_name, 12), '-')[safe_offset(3)] as campaign_name_name,
+    split(substr(campaign_name, 12), '-')[safe_offset(4)] as campaign_adazzle_number,
     site_id,
     site_name, 
     placement_id,
@@ -30,20 +30,18 @@ select
     split(placement_name, '-')[safe_offset(5)] as placement_ciblage,
     split(placement_name, '-')[safe_offset(6)] as placement_format_name,
     split(placement_name, '-')[safe_offset(7)] as placement_format_size,
-    split(placement_name, '-')[safe_offset(8)] as adform_placement_device,
-    split(placement_name, '-')[safe_offset(9)] as adform_placement_date,    
+    split(placement_name, '-')[safe_offset(8)] as adform_placement_device,    
     creative_id,
     creative_name , 
     split(creative_name, '-')[safe_offset(0)] as creative_asset_type,
     split(creative_name, '-')[safe_offset(1)] as creative_format_name,
-    split(creative_name, '-')[safe_offset(2)] as creative_format_size
+    split(creative_name, '-')[safe_offset(2)] as creative_format_size,
     split(creative_name, '-')[safe_offset(3)] as creative_message_name,
-    split(creative_name, '-')[safe_offset(4)] as creative_adserver_placement_id,    
-    split(creative_name, '-')[safe_offset(4)] as creative_date,    
 
 /* Rules for handling diffusion metrics
    check how to update these rules based on usages date base
 */
+
   case when impressions is null then impressions_original else impressions end as impressions,
   case when clicks is null then clicks_original else clicks end as clicks,
   case when media_cost is null then media_cost_original else media_cost end as media_cost,

@@ -13,6 +13,12 @@ sources:
         meta:
           contains_pii: false
           owner : " Team BI"
+      - name: gae_popcorn_tv  
+        tags: ['Ixio Data']
+        meta:
+          contains_pii: false
+          owner : "Team BI"
+     
 
   - name: mapping_tag
     loader: BigQuery
