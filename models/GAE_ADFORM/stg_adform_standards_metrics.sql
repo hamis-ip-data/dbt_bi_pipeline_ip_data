@@ -4,7 +4,9 @@
     )
 }}
 
-/* The campaign naming convention should follow the instruction at this adress -> */
+/* The campaign naming convention should follow the instruction at this address -> 
+https://globalappsportal.sharepoint.com/:p:/r/sites/EquipeDache/Shared%20Documents/General/Guidelines_Adserving_Nomenclature.pptx?d=w5351cc268f03495c9e7e05e3046abec0&csf=1&web=1 
+*/
 
 select 
     concat(date,'_',campaign_id,'_',site_id,'_',placement_id,'_',creative_id,'_', ad_id) as info_key,
@@ -13,6 +15,7 @@ select
     campaign_name, 
     campaign_id,
     substr(campaign_name, 0,10) as campaign_date,
+    ARRAY_LENGTH(split(substr(campaign_name, 12), '-')) array_campain,
     split(substr(campaign_name, 12), '-')[safe_offset(0)] as campaign_category,
     split(substr(campaign_name, 12), '-')[safe_offset(1)] as campaign_levier,
     split(substr(campaign_name, 12), '-')[safe_offset(2)] as campaign_ministere,
