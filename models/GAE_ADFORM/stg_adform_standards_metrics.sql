@@ -33,7 +33,7 @@ select
     split(placement_name, '-')[safe_offset(5)] as placement_ciblage,
     split(placement_name, '-')[safe_offset(6)] as placement_format_name,
     split(placement_name, '-')[safe_offset(7)] as placement_format_size,
-    split(placement_name, '-')[safe_offset(8)] as adform_placement_device,    
+    split(placement_name, '-')[safe_offset(8)] as placement_device,    
     creative_id,
     creative_name , 
     split(creative_name, '-')[safe_offset(0)] as creative_asset_type,

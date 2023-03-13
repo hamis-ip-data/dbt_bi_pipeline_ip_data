@@ -1,29 +1,34 @@
-{{
-  config(
-    materialized = 'table',
+
+
+ {{
+    config(
+        materialized="table",
+        labels={"type": "datorama_data", "clients": "gae", "category": "analysis"},
     )
 }}
+
 
 with stg_adform_standards_metrics as (
 
   select
     info_key,
     date,
-    advertiser_name,
-    campaign_name,
+    advertiser_name ,
+    campaign_name, 
     campaign_id,
     campaign_date,
+    array_campain, 
     campaign_category,
     campaign_levier,
     campaign_ministere,
     campaign_name_name,
-    campaign_adzzle_number,
-    campaign_objective,
-    campaign_platform_name,
+    campaign_adazzle_number,
+    -- campaign_objective,
+    -- campaign_platform_name,
     site_id,
-    site_name,
+    site_name, 
     placement_id,
-    placement_name,
+    placement_name,  
     placement_type,
     placement_objective,
     placement_byying_method,
@@ -32,16 +37,15 @@ with stg_adform_standards_metrics as (
     placement_ciblage,
     placement_format_name,
     placement_format_size,
-    adform_placement_device,
-    adform_placement_date,
+    placement_device,
     creative_id,
     creative_name,
     creative_asset_type,
     creative_format_name,
+    --creative_format_size,
     creative_format_size,
     creative_message_name,
-    creative_adserver_placement_id,
-    creative_date,
+    --creative_date,
     impressions,
     clicks,
     media_cost,
@@ -101,9 +105,9 @@ select
     stg_adform_standards_metrics.campaign_levier,
     stg_adform_standards_metrics.campaign_ministere,
     stg_adform_standards_metrics.campaign_name_name,
-    stg_adform_standards_metrics.campaign_adzzle_number,
-    stg_adform_standards_metrics.campaign_objective,
-    stg_adform_standards_metrics.campaign_platform_name,
+    stg_adform_standards_metrics.campaign_adazzle_number,
+    --stg_adform_standards_metrics.campaign_objective,
+    --stg_adform_standards_metrics.campaign_platform_name,
     stg_adform_standards_metrics.site_id,
     stg_adform_standards_metrics.site_name,
     stg_adform_standards_metrics.placement_id,
@@ -116,16 +120,16 @@ select
     stg_adform_standards_metrics.placement_ciblage,
     stg_adform_standards_metrics.placement_format_name,
     stg_adform_standards_metrics.placement_format_size,
-    stg_adform_standards_metrics.adform_placement_device,
-    stg_adform_standards_metrics.adform_placement_date,
+    stg_adform_standards_metrics.placement_device,
+    --stg_adform_standards_metrics.adform_placement_date,
     stg_adform_standards_metrics.creative_id,
     stg_adform_standards_metrics.creative_name,
     stg_adform_standards_metrics.creative_asset_type,
     stg_adform_standards_metrics.creative_format_name,
     stg_adform_standards_metrics.creative_format_size,
     stg_adform_standards_metrics.creative_message_name,
-    stg_adform_standards_metrics.creative_adserver_placement_id,
-    stg_adform_standards_metrics.creative_date,
+    --stg_adform_standards_metrics.creative_adserver_placement_id,
+    --stg_adform_standards_metrics.creative_date,
     stg_adform_standards_metrics.impressions,
     stg_adform_standards_metrics.clicks,
     stg_adform_standards_metrics.media_cost,
@@ -161,6 +165,5 @@ select
     left join stg_adform_conversions_dict
   on stg_adform_standards_metrics.info_key = stg_adform_conversions_dict.info_key  
   where stg_adform_standards_metrics.site_id !=-1
-
-
-   
+  order by date desc 
+  
