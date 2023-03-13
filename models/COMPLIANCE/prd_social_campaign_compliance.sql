@@ -7,6 +7,7 @@
 with data_checking as ( 
 select
     distinct
+    campaign_id,
     campaign_category,
     campaign_levier,
     campaign_ministere,
