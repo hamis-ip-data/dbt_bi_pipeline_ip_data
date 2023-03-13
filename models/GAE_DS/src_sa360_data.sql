@@ -38,4 +38,4 @@
     Transactions__DoubleClick_Search,
     Visits__DoubleClick_Search
     from {{ source('gae_ds_data', 'gae_ds_export_*') }}
-    where lower(Data_Source_name) not like '%floodlight%'
+    where lower(Data_Source_name) not like '%floodlight%' and Data_Source_type ='doubleclicksearch'

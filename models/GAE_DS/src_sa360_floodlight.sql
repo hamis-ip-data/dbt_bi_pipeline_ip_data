@@ -30,7 +30,7 @@ with data_floodlight as (
     sum(Actions__DoubleClick_Search) as actions_ds,
 
   from {{ source('gae_ds_data', 'gae_ds_floodlight_export_*') }}
-
+   where Data_Source_type ='doubleclicksearch'
   group by 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21
 )
 
