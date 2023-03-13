@@ -89,3 +89,28 @@ sources:
         meta:
           contains_pii: false
           owner : "Team BI"
+
+  - name: compliance
+    loader: BigQuery
+    schema: bi_naming_convention_gae
+    database: dash-project-376514
+    freshness: # default freshness
+      warn_after: {count: 12, period: hour}
+      error_after: {count: 24, period: hour}
+    tables:
+      - name: adserver_campaign
+        tags: ['Datorama Data']
+      - name: adserver_creative
+        tags: ['Datorama Data']
+      - name: adserver_line_item
+        tags: ['Datorama Data']
+      - name: sea_agroup
+        tags: ['Datorama Data']
+      - name: sea_campagne
+        tags: ['Datorama Data']
+      - name: social_campagne
+        tags: ['Datorama Data']
+      - name: social_crea
+        tags: ['Datorama Data']
+      - name: social_line_item
+        tags: ['Datorama Data']        
