@@ -7,6 +7,7 @@
 with data_checking as ( 
 select
     distinct
+    campaign_id,
     campaign_category,
     campaign_levier,
     campaign_ministere,
@@ -16,7 +17,7 @@ select
         when
             exists (
                 select 1
-                from {{ source('compliance', 'social_campagne') }} as b
+                from {{ source('compliance', 'adserver_campaign') }} as b
                 where b.category = a.campaign_category
             )
         then 1
@@ -26,7 +27,7 @@ select
         when
             exists (
                 select 1
-                from {{ source('compliance', 'social_campagne') }}  as b
+                from {{ source('compliance', 'adserver_campaign') }}  as b
                 where b.levier = a.campaign_levier
             )
         then 1
@@ -36,15 +37,15 @@ select
         when
             exists (
                 select 1
-                from {{ source('compliance', 'social_campagne') }}  as b
-                where b.ministere = a.campaign_ministere
+                from {{ source('compliance', 'adserver_campaign') }}  as b
+                where b.minister = a.campaign_ministere
             )
         then 1
         else 0
     end as check_minister
 
 from {{ ref("prd_adform_consolidation") }} as a
-where data_source_type = 'Social Ads'
+where data_source_type = 'Display'
 )
 
 select 
