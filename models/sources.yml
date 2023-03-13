@@ -114,3 +114,8 @@ sources:
         tags: ['Datorama Data']
       - name: social_line_item
         tags: ['Datorama Data']        
+      - name: data_advertiser
+        tags: ['Datorama Data']        
+      - name: mapping_mm_label
+        tags: ['Datorama Data']                
+
